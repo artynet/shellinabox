@@ -82,6 +82,10 @@
 #include <sys/uio.h>
 #endif
 
+#ifndef TTYDEF_IFLAG
+#include <sys/ttydefaults.h>
+#endif
+
 #ifdef HAVE_UTIL_H
 #include <util.h>
 #endif
@@ -90,9 +94,9 @@
 #include <utmp.h>
 #endif
 
-#ifdef HAVE_UTMPX_H
-#include <utmpx.h>
-#endif
+#undef HAVE_UTMPX_H
+
+#define HAVE_PTSNAME_R 1
 
 #if defined(HAVE_SECURITY_PAM_APPL_H)
 #include <security/pam_appl.h>
